@@ -35,6 +35,9 @@
     </span>
 
     <div class="rightButtons">
+    <!-- ko if: typeof $root.saveToServer !== 'undefined' -->
+    <a title="Save template to server" href="#" data-bind="attr: { title: $root.t('Save template to server') }, click: $root.saveToServer.execute, clickBubble: false, button: { disabled: !$root.saveToServer.enabled(), icons: { primary: 'fa fa-fw fa-cloud-upload' }, label: $root.t($root.saveToServer.name), text: true }">SAVE TO SERVER</a>
+    <!-- /ko -->
     <!-- ko if: typeof $root.save !== 'undefined' -->
     <a title="Save template" href="javascript:void(0)" data-bind="attr: { title: $root.t('Save template') }, click: $root.save.execute, clickBubble: false, button: { disabled: !$root.save.enabled(), icons: { primary: 'fa fa-fw fa-cloud-upload' }, label: $root.t($root.save.name), text: true }">SALVA</a>
     <!-- /ko -->
