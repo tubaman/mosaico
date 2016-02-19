@@ -98,6 +98,7 @@ var lsCommandPluginFactory = function(md, emailProcessorBackend, saveProcessorBa
       var postUrl = saveProcessorBackend ? saveProcessorBackend : '/template/';
       var post = $.post(postUrl, {
         action: 'save',
+        name: mdkey + " - " + mdname,
         html: viewModel.exportHTML()
       }, null, 'html');
       post.fail(function() {
