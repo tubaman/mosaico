@@ -95,11 +95,17 @@ var lsCommandPluginFactory = function(md, emailProcessorBackend, saveProcessorBa
     saveToServerCmd.execute = function() {
       saveToServerCmd.enabled(false);
 
+      var metaData = viewModel.exportMetadata();
+      var templateData = viewModel.exportJSON();
+
       var postUrl = saveProcessorBackend ? saveProcessorBackend : '/template/';
       var post = $.post(postUrl, {
         action: 'save',
-        name: mdkey + " - " + mdname,
-        html: viewModel.exportHTML()
+        key: mdkey,
+        name: mdname,
+        html: viewModel.exportHTML(),
+        template_data: templateData,
+        meta_data: metaData
       }, null, 'html');
       post.fail(function() {
         console.log("fail", arguments);
